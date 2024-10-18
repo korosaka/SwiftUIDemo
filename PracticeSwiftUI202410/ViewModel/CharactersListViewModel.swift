@@ -10,7 +10,23 @@ import Foundation
 class CharactersListViewModel: ObservableObject {
     
     private let isMock: Bool
+    private var repo: CharactersRepositoryProtocol
+    @Published var characters: [CharacterTop]?
+    
     init(isMock: Bool) {
         self.isMock = isMock
+        if isMock {
+            repo = CharactersMockRepository()
+        } else {
+            repo = CharactersAPIRepository()
+        }
+        
+        let completion = { (characters: [CharacterTop]?) -> Void in
+            guard let _characters = characters else {
+                return
+            }
+            self.characters = characters
+        }
+        repo.fetchCharacters(completion: completion)
     }
 }
