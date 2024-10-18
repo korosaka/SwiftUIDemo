@@ -6,6 +6,8 @@
 //
 import SwiftUI
 struct CharactersListView: View {
+    
+    @ObservedObject var viewModel: CharactersListViewModel
     var body: some View {
         NavigationView {
             VStack {
@@ -16,5 +18,5 @@ struct CharactersListView: View {
 }
 
 #Preview {
-    CharactersListView()
+    CharactersListView(viewModel: CharactersListViewModel(isMock: true))
 }
