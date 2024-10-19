@@ -17,6 +17,8 @@ struct CharactersListView: View {
                     //                    }
                 }
             }
+        }.onAppear {
+            viewModel.fetchCharacters()
         }
     }
 }

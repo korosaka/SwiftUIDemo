@@ -20,12 +20,17 @@ class CharactersListViewModel: ObservableObject {
         } else {
             repo = CharactersAPIRepository()
         }
-        
+    }
+    
+    func fetchCharacters() {
         let completion = { (characters: [CharacterTop]?) -> Void in
             guard let _characters = characters else {
                 return
             }
-            self.characters = characters
+            
+            DispatchQueue.main.async {
+                self.characters = _characters
+            }
         }
         repo.fetchCharacters(completion: completion)
     }
