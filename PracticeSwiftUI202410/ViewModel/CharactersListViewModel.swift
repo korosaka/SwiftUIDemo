@@ -29,4 +29,11 @@ class CharactersListViewModel: ObservableObject {
         }
         repo.fetchCharacters(completion: completion)
     }
+    
+    func getCharactersToShow() -> [CharacterTop] {
+        guard let _characters = characters else {
+            return []
+        }
+        return _characters
+    }
 }

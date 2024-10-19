@@ -12,5 +12,5 @@ struct CharacterTop {
     let id: String
     let name: String
     let imageUrl: String
-    var image: Image?
+    var image: ImageResource?
 }

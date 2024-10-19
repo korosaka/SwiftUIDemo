@@ -11,7 +11,11 @@ struct CharactersListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("CharactersListView")
+                List(viewModel.getCharactersToShow(), id: \.id) { character in
+                    //                    NavigationLink(destination: )) {
+                    CharacterListItem(characterName: character.name, imageResource: character.image)
+                    //                    }
+                }
             }
         }
     }
